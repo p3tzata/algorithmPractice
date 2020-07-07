@@ -2,7 +2,7 @@ package algorithmPractice.recursion.room1;
 
 
 
-import util.Print;
+import util.Util;
 
 public class SumOfArray {
 
@@ -13,8 +13,8 @@ public class SumOfArray {
 		
 			
 		
-		Print.printArray(intArray," ");
-		Print.printlnLine( sumRecursion(0));
+		Util.printArray(intArray," ");
+		Util.printlnLine( sumRecursion(0));
 				
 
 	}
@@ -29,7 +29,7 @@ public class SumOfArray {
 		} else {
 		
 			Integer curSumInteger = intArray[index] + sumRecursion(index  + 1);
-			Print.printlnLine( curSumInteger);
+			Util.printlnLine( curSumInteger);
 		return curSumInteger;
 		
 		}

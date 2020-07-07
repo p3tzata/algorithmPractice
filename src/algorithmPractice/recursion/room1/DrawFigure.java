@@ -1,6 +1,6 @@
 package algorithmPractice.recursion.room1;
 
-import util.Print;
+import util.Util;
 
 public class DrawFigure {
 
@@ -22,11 +22,11 @@ public class DrawFigure {
 			return;
 		}
 		
-		Print.printNtime("#", cnt);
+		Util.printNtime("#", cnt);
 		
 		draw(cnt-1);
 		
-		Print.printNtime("#", cnt);
+		Util.printNtime("#", cnt);
 		
 		
 		

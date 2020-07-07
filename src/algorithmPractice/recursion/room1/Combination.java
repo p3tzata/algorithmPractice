@@ -4,7 +4,7 @@ package algorithmPractice.recursion.room1;
 
 import java.util.Stack;
 
-import util.Print;
+import util.Util;
 
 public class Combination {
 	static Integer vector[];
@@ -27,10 +27,10 @@ public class Combination {
 	
 	static public void recursion_star() {
 	
-		//for(int i=0;i<setArray.length;i++) {
-			
-			recursion_dynamic(0,0);			
-		//}
+		
+		    recursion_dynamic_p(0,0);
+			//recursion_dynamic(0,0);			
+		
 	
 	
 	}
@@ -43,7 +43,7 @@ public class Combination {
 		
 		
 		if (depth==vector.length) {
-			Print.printArray(vector, "-");
+			Util.printArray(vector, "-");
 			return;
 		}
 		
@@ -60,6 +60,29 @@ public class Combination {
 		
 	}
 	
+	static public void recursion_dynamic_p(int indx, int depth) {
+		
+		
+		if (depth==vector.length) {
+			Util.printArray(vector, "-");
+			return;
+		}
+		
+		
+		for(int i=indx;i<setArray.length;i++) {
+			vector[depth]=setArray[i];
+			recursion_dynamic_p(i, depth+1);
+			
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
 	
 	
 	
@@ -75,7 +98,7 @@ public class Combination {
 			
 				
 		
-		Print.printlnLine(setArray[index] + " - " + setArray[c]);
+		Util.printlnLine(setArray[index] + " - " + setArray[c]);
 		//Print.printArraySlice(intArray, index, c , " - ");	
 			
 		

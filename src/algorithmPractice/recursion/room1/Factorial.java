@@ -1,6 +1,6 @@
 package algorithmPractice.recursion.room1;
 
-import util.Print;
+import util.Util;
 
 public class Factorial {
 
@@ -10,7 +10,7 @@ public class Factorial {
 	public static void main(String[] args) {
 		
 			
-		Print.printlnLine(factorial(5));
+		Util.printlnLine(factorial(5));
 		
 				
 

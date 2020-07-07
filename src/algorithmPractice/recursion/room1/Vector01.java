@@ -2,7 +2,7 @@ package algorithmPractice.recursion.room1;
 
 
 
-import util.Print;
+import util.Util;
 
 public class Vector01 {
 
@@ -19,7 +19,7 @@ public class Vector01 {
 		
 		if (index==intArray.length) {
 			
-			Print.printArray(intArray," ");
+			Util.printArray(intArray," ");
 			
 			
 		} else {
