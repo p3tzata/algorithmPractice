@@ -79,8 +79,8 @@ public static <T> void printMatrix(T[][] arr, int cellLength){
 	    return sb.toString();
 	}
 	
-	public static void swap(Integer[] arr,Integer a, Integer b) {
-		Integer tmpString;
+	public static <T> void swap(T[] arr,Integer a, Integer b) {
+		T tmpString;
 		tmpString=arr[a];
 		arr[a]=arr[b];
 		arr[b]=tmpString;
