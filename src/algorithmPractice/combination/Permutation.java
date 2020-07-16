@@ -3,11 +3,14 @@ package algorithmPractice.combination;
 
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import util.Util;
 
 public class Permutation {
 	
-	static String[] srcArray = new String[] {"A","B","C"};
+	static String[] srcArray = new String[] {"A","A","B"};
 	static String[] vector = new String[srcArray.length];
 	static Integer[] used = new Integer[srcArray.length];
 
@@ -19,12 +22,36 @@ public class Permutation {
 		//permutation(0);
 		//permutation_iteration();
 		//permutation_swap(0);
+		remutation_rep(0);
+		
 		//heapPermutation(srcArray.length);
 		
 		
-		Util.printlnLine(2 % 2);
+		//Util.printlnLine(2 % 2);
 		
 
+	}
+	
+	
+	
+	public static void remutation_rep(int index) {
+	  if (index >= srcArray.length) {
+	    Util.printArray(srcArray, ",");
+	    return;
+	  }
+	else {
+		HashSet<String> swapped = new HashSet<>();
+	
+	    for (int i = index; i < srcArray.length; i++) {
+	      if (!swapped.contains(srcArray[i])) {
+	        Util.swap(srcArray,index, i);
+	        remutation_rep(index + 1);
+	        Util.swap(srcArray,index, i);
+	        swapped.add(srcArray[i]);
+	      }
+	    }
+	    
+	}
 	}
 	
 	
@@ -34,6 +61,7 @@ public class Permutation {
         // permutation 
         if (size == 1) {
             Util.printArray(srcArray, ",");
+            return;
         }
         
         
@@ -57,8 +85,12 @@ public class Permutation {
             	String temp = srcArray[i]; 
                 srcArray[i] = srcArray[size-1]; 
                 srcArray[size-1] = temp; 
-            } 
+            }
+            
+            
+            
         } 
+        
     } 
 	
 	
@@ -70,6 +102,7 @@ public class Permutation {
 			Util.printArray(srcArray, ",");
 			return;
 		}
+		
 		permutation_swap(depth+1);
 		
 		for(int i=depth+1;i<srcArray.length;i++) {
