@@ -2,6 +2,7 @@ package algorithmPractice.combination.exam;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -21,9 +22,12 @@ public class Snake {
 	private static Character L = new Character('L');
 	private static Character U = new Character('U');
 	private static Character S = new Character('S');
+	private static HashSet<String> trackerSet;
+	
 	
 	public static void main(String[] args) throws Exception {
 		tracker=new LinkedList<>();
+		trackerSet = new HashSet<>();
 		store=new LinkedList<>();
 		xDemension=4;
 		matrix = new String[xDemension][xDemension];
@@ -113,12 +117,14 @@ public class Snake {
 	
 	static void snakeRec(int x,int y,int lenght,Character chr) throws Exception {
 		
+		String coordinateString = String.format("%d-%d", x,y);
 		
-		
-		
+		//if (!coordinateString.contains(coordinateString))
 		if (checkIfFreeForStep(x,y)) {
 			
 			stepOn(x,y);
+			
+			trackerSet.add(coordinateString);
 			tracker.add(chr);
 			if (lenght==xDemension) {
 				Util.printlnLine("");
