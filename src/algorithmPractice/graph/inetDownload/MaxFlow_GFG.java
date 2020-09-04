@@ -1,4 +1,4 @@
-package algorithmPractice.graph.tasks;
+package algorithmPractice.graph.inetDownload;
 //Java program for implementation of Ford Fulkerson algorithm 
 import java.util.*; 
 import java.lang.*; 

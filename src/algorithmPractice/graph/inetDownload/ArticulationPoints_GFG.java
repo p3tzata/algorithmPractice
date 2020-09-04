@@ -1,10 +1,12 @@
-package algorithmPractice.graph.tasks;
+package algorithmPractice.graph.inetDownload;
 
 
 
 	import java.io.*; 
-	import java.util.*; 
-	import java.util.LinkedList; 
+	import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import util.Util; 
 	  
 	// This class represents an undirected graph using adjacency list 
 	// representation 
@@ -24,9 +26,16 @@ package algorithmPractice.graph.tasks;
 	        adj = new LinkedList[v]; 
 	        for (int i=0; i<v; ++i) 
 	            adj[i] = new LinkedList(); 
-	    } 
+	    }
+	    
+	    
+	    
 	  
-	    //Function to add an edge into the graph 
+
+
+
+
+		//Function to add an edge into the graph 
 	    void addEdge(int v, int w) 
 	    { 
 	        adj[v].add(w);  // Add w to v's list. 
@@ -73,13 +82,16 @@ package algorithmPractice.graph.tasks;
 	                // u is an articulation point in following cases 
 	  
 	                // (1) u is root of DFS tree and has two or more chilren. 
-	                if (parent[u] == NIL && children > 1) 
-	                    ap[u] = true; 
+	                
 	  
 	                // (2) If u is not root and low value of one of its child 
 	                // is more than discovery value of u. 
 	                if (parent[u] != NIL && low[v] >= disc[u]) 
 	                    ap[u] = true; 
+	                
+	                if (parent[u] == NIL && children > 1) 
+	                    ap[u] = true; 
+	                
 	            } 
 	  
 	            // Update low value of u for parent function calls. 
@@ -119,9 +131,44 @@ package algorithmPractice.graph.tasks;
 	                System.out.print(i+" "); 
 	    } 
 	  
+	    
+	    static void mutate(Integer x) {
+	    	
+	    	mutate(x+1);
+	    
+	    }
+	    
 	    // Driver method 
 	    public static void main(String args[]) 
 	    { 
+	    	
+	    	
+	    	ArticulationPoints_GFG g0 = new ArticulationPoints_GFG(13); 
+	        g0.addEdge(0, 1); 
+	        g0.addEdge(0, 2);
+	        g0.addEdge(0, 6);
+	        g0.addEdge(0, 7);
+	        g0.addEdge(0, 9);
+	        g0.addEdge(1, 6);
+	        g0.addEdge(2, 7);
+	        g0.addEdge(3, 4);
+	        g0.addEdge(4, 6);
+	        g0.addEdge(4, 10);
+	        g0.addEdge(5, 7);
+	        g0.addEdge(6, 8);
+	        g0.addEdge(6, 10);
+	        g0.addEdge(6, 11);
+	        g0.addEdge(7, 9);
+	        g0.addEdge(7, 12);
+	        g0.addEdge(8, 11);
+	        g0.AP();
+	        
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
 	        // Create graphs given in above diagrams 
 	        //System.out.println("Articulation points in first graph "); 
 	        ArticulationPoints_GFG g1 = new ArticulationPoints_GFG(5); 
@@ -129,7 +176,8 @@ package algorithmPractice.graph.tasks;
 	        g1.addEdge(0, 2); 
 	        g1.addEdge(2, 1); 
 	        g1.addEdge(0, 3); 
-	        g1.addEdge(3, 4); 
+	        g1.addEdge(3, 4);
+	        
 	       // g1.AP(); 
 	       // System.out.println(); 
 	  
@@ -153,14 +201,14 @@ package algorithmPractice.graph.tasks;
 	        g3.addEdge(4, 5); 
 	       // g3.AP(); 
 	        
-	        ArticulationPoints_GFG g4 = new ArticulationPoints_GFG(4); 
+	        ArticulationPoints_GFG g4 = new ArticulationPoints_GFG(3); 
 	        g4.addEdge(0, 1); 
+	        g4.addEdge(0, 2);
 	        g4.addEdge(1, 2);
-	        g4.addEdge(1, 3);
 	       // g4.addEdge(2, 3);
-	        g4.AP(); 
+	        //g4.AP(); 
 	        
-	        
+	       
 	    } 
 	} 
 	// This code is contributed by Aakash Hasija 
