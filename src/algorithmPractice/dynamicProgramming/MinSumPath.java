@@ -17,7 +17,7 @@ public class MinSumPath {
 	public static void main(String[] args) {
 		resultPath = new HashMap<>();
 		matrix = new int[][] {
-			{4, 1, 1, 1},
+			{5, 1, 1, 1},
 			{8, 6, 4, 1},
 			{1, 1, 1, 1},
 			{1, 4, 6, 8},
