@@ -6,8 +6,8 @@ public class Parentheses {
 
 	
 	static Character[] result;
-	static int n=20;
-	
+	static int n=2;
+	static int cnt=0;
 	public static void main(String[] args) {
 		
 	
@@ -16,8 +16,8 @@ public class Parentheses {
 	result[0]='(';	
 	
 	long start = System.currentTimeMillis();
-	gen(1,1,0);
-	Util.printlnLine(System.currentTimeMillis()-start);	
+	gen(0,0,0);
+	//Util.printlnLine(System.currentTimeMillis()-start);	
 		
 
 	}
@@ -25,19 +25,24 @@ public class Parentheses {
 	private static void gen(int indx, int openedBrecket, int closetBrecket) {
 		
 		if(indx==result.length) {
-			//Util.printArray(result, "");
+			Util.printArray(result, "");
 			return;
 		}
 		
 		if(openedBrecket<n) {
 		result[indx]='(';	
 		gen(indx+1,openedBrecket+1,closetBrecket);
+		
 		}
 		
 		if(openedBrecket>closetBrecket) {
 		result[indx]=')';
 		gen(indx+1,openedBrecket,closetBrecket+1);
+		
 		}
+		
+		Util.printlnLine(cnt++);
+		
 		
 	}
 
