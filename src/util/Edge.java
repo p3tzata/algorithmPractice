@@ -27,6 +27,18 @@ public class Edge implements Comparable<Edge> {
 		return weight;
 	}
 
+	public void setStartNode(int startNode) {
+		this.startNode = startNode;
+	}
+
+	public void setEndNode(int endNode) {
+		this.endNode = endNode;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
 	@Override
 	public String toString() {
 		return "Edge [startNode=" + startNode + ", endNode=" + endNode + ", weight=" + weight + "]";

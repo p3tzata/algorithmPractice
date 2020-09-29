@@ -26,6 +26,13 @@ public class Graph {
 		
 	}
 	
+public static void setUndirectedEge(Integer[][] matrix, int u, int v) {
+		
+		matrix[u][v]=1;
+		matrix[v][u]=1;
+		
+	}
+	
 public static void setDirectedEge(int[][] matrix, int u, int v) {
 		
 		matrix[u][v]=1;
