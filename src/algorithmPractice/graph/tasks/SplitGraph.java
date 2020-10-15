@@ -15,12 +15,17 @@ public class SplitGraph {
 	private static int cnt=0;
 	private static int curSum=0;
 	private static int max=0;;
+	private static int[] sumResult;
+	private static int[] cntResult;
+	
+	
 	
 	public static void main(String[] args) {
 
 		graph = new int[11][11];
 		visited = new boolean[11];
-		
+		sumResult=new int[11];
+		cntResult=new int[11];
 		
 		Graph.setUndirectedEge(graph, 1, 3);
 		Graph.setUndirectedEge(graph, 1, 2);
@@ -34,45 +39,46 @@ public class SplitGraph {
 		
 		
 		
-		visited[startNode]=true;
+		DFSUtil(startNode);
+		
 		for(int i=1;i<graph.length;i++) {
-			
-			if(graph[startNode][i]==1) {
-				
-				DFSUtil(i);
-				if(cnt%2==0) {
-					if(curSum>max) {
-						max=curSum;
-					}
+			if(startNode!=i && cntResult[i]%2==1 ) {
+				if(max<sumResult[i]) {
+					max=sumResult[i];
 				}
-				cnt=0;
-				curSum=0;
-				
-				
 			}
-			
-			
 		}
+		
+		
 		
 		Util.printlnLine(max);
 		
 
 	}
 
-	private static void DFSUtil(int i) {
+	private static int DFSUtil(int i) {
 		
 		visited[i]=true;
-		cnt++;
-		curSum+=i;
-		
+		cnt=0;
+		sumResult[i]=i;
+				
+				
 		for(int j=1;j<graph.length;j++) {
 			
 			if(graph[i][j]==1 && !visited[j]) {
-				
-				DFSUtil(j);
+				cnt++;
+				cnt+=DFSUtil(j);
+				sumResult[i]+=sumResult[j];
 			}
 		}
 		
+		cntResult[i]=cnt;
+		
+		
+		//Util.printlnLine("Node "+i+"="+ cnt);
+		
+		
+		return cnt;
 		
 		
 	}
