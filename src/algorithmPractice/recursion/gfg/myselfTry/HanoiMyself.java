@@ -1,8 +1,8 @@
-package algorithmPractice.recursion.gfg;
+package algorithmPractice.recursion.gfg.myselfTry;
 
 import util.Util;
 
-public class HanoiMyselfTry {
+public class HanoiMyself {
 	
 	static final int N=6;
 	static int cnt=0;

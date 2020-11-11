@@ -33,6 +33,13 @@ public static <T> void printMatrix(T[][] arr, int cellLength){
 		
 	}
 	
+	public static <T> String printArrayAsString(T[] arr,String delimeter){
+		
+		return printArraySliceAsString(arr, 0, arr.length-1, delimeter);
+		
+	}
+	
+	
 	
 	public static <T> void printArraySlice(T[] arr,int fromIndx, int toIndx,String delimeter){
 	    for(int i=fromIndx;i<=toIndx;i++){
@@ -46,7 +53,22 @@ public static <T> void printMatrix(T[][] arr, int cellLength){
 	    System.out.println("");
 	}
 	
-	
+	public static <T> String printArraySliceAsString(T[] arr,int fromIndx, int toIndx,String delimeter){
+	    StringBuilder stringBuilder = new StringBuilder();
+		for(int i=fromIndx;i<=toIndx;i++){
+	       if (i!=toIndx) {
+	       //System.out.print(arr[i]+delimeter);
+	    	   stringBuilder.append(arr[i]+delimeter);	   
+	       } else {
+	    	   //System.out.print(arr[i]);
+	    	   stringBuilder.append(arr[i]);
+	       }
+	       
+	    }
+	    //System.out.println("");
+		return stringBuilder.toString();
+		
+	}
 	
 	
 	
