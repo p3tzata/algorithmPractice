@@ -17,22 +17,23 @@ public class Combination {
 
 	static private void combination(int indx,int bound,int level) {
 		
-		RecursionPrintTree recursionPrintTree = new RecursionPrintTree(level);
-		recursionPrintTree.printHeaderCall(indx, bound);
+		RecursionPrintTree tree = new RecursionPrintTree(level);
+		tree.printHeaderCall("indx:"+indx,"bound:"+ bound);
 		
 		if(indx>=vector.length) {
 			
 			
 			//Util.printArray(vector, ",");
 			String resultString=Util.printArrayAsString(vector, ",");
-			recursionPrintTree.printResultBase(resultString );
+			tree.printResultBase(resultString );
 			
 			return;
 		}
 		
-		
+		tree.printPreRecursion(tree.strBuilder.for_().exp("i", bound).var_("bound", bound).andExp().var_("i", "").opr("<").var_("srcArray.lenght", srcArray.length).andExp().var_("i++", "").endExp()._for());
 		for (int i=bound;i<srcArray.length;i++) {
-			
+			tree.printPreRecursion(tree.strBuilder.exp("vector", srcArray[i], "indx",indx).var_("srcArray",srcArray[i] ,"i",i).endExp()  );
+			//tree.printPreRecursion("test" );
 			vector[indx]=srcArray[i];
 			combination(indx+1,i+1,level+1);
 			

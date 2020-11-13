@@ -1,11 +1,5 @@
 package util.funcPrintTree;
 
-import static util.funcPrintTree.RecursionPrintTree.frmStr_buildExp;
-import static util.funcPrintTree.RecursionPrintTree.frmStr_const;
-import static util.funcPrintTree.RecursionPrintTree.frmStr_operator;
-import static util.funcPrintTree.RecursionPrintTree.frmStr_operatorIfElse;
-import static util.funcPrintTree.RecursionPrintTree.frmStr_operatorIfThen;
-import static util.funcPrintTree.RecursionPrintTree.frmStr_var;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,13 +15,18 @@ public class RecursionPrintTree {
 	  private static int multiple=3;
 	  private static String fncName="fnc";
 	  public static final String ANSI_RESET = "\u001B[0m";
+	  public static final String ANSI_MAGENTA = "\u001B[95m";
+	  public static final String ANSI_ITALIC = "\u001B[3m";
+	  public static final String ANSI_UNDERLINE = "\u001B[4m";
 	  public static final String ANSI_BLACK = "\u001B[30m";
 	  public static final String ANSI_RED = "\u001B[31m";
 	  public static final String ANSI_GREEN = "\u001B[32m";
 	  public static final String ANSI_YELLOW = "\u001B[33m";
 	  public static final String ANSI_BLUE = "\u001B[34m";
+	  public static final String ANSI_BLUE_LIGHT = "\u001B[96m";
 	  public static final String ANSI_PURPLE = "\u001B[35m";
 	  public static final String ANSI_CYAN = "\u001B[36m";
+	  public static final String ANSI_GRAY = "\u001B[90m";
 	  public static final String ANSI_WHITE = "\u001B[37m";
 	
 	  
@@ -52,6 +51,11 @@ public class RecursionPrintTree {
 	  private int curRotateFontColor;
 	  private int level;
 	  
+	  public static String varNameColor=ANSI_CYAN;
+	  public static String varValColor=ANSI_GRAY + ANSI_UNDERLINE + ANSI_ITALIC;
+	  public static String javaOprColor=ANSI_MAGENTA + ANSI_ITALIC;
+	  
+	  
 	  public StrBuilder strBuilder;
 	
 	public RecursionPrintTree(int level) {
@@ -60,7 +64,7 @@ public class RecursionPrintTree {
 		strBuilder=new StrBuilder();
 		listOfBackgroundColor.add(ANSI_GREEN_BACKGROUND);
 		listOfBackgroundColor.add(ANSI_YELLOW_BACKGROUND);
-		listOfBackgroundColor.add(ANSI_CYAN_BACKGROUND);
+		listOfBackgroundColor.add(ANSI_GREEN_BACKGROUND);
 		listOfFontColor.add(ANSI_RED);
 		listOfFontColor.add(ANSI_BLUE);
 		
@@ -192,37 +196,7 @@ public class RecursionPrintTree {
 	
 	
 	
-	public static  String frmStr_buildExp(String resultName,Object resultVal , Object exp ) {
-		return String.format("%s[[%s]]=%s", resultName, resultVal,exp);
-	}
-	
-	public static String frmStr_var(String varStr,Object varVal ) {
-		return String.format("%s[%s]",varStr, varVal);
-	}
-	
-	public static String frmStr_operator(Object operStr ) {
-		return String.format("%s",operStr);
-	}
-	
-	public static String frmStr_operatorIfThen(String condition ) {
-		return String.format("if( %s )",condition );
-	}
-	
-	public static String frmStr_operatorIfThen(String condition , String then_) {
-		return String.format("if( %s ) { %s } ",condition , then_);
-	}
-	
-	public static String frmStr_operatorIfElse(String condition , String then_,String else_) {
-		return String.format("if( %s ) { %s } else { %s }",condition , then_,else_);
-	}
-	
-	
-	public static String frmStr_const(Object constStr ) {
-		return String.format("%s",constStr);
-	}
-	
-	
-	
+
 	
 	private static String pad(int level) {
 	

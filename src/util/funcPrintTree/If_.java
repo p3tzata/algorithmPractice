@@ -4,6 +4,9 @@ package util.funcPrintTree;
 
 public class If_ implements IStrBuilder{
 	
+	private String javaOprColor=RecursionPrintTree.javaOprColor;
+	private String resetColor=RecursionPrintTree.ANSI_RESET;
+	
 	StringBuilder stringBuilder_If=new StringBuilder(); 
 	private StrBuilder parentStrBuilder;
 							
@@ -24,7 +27,7 @@ public class If_ implements IStrBuilder{
 	
 	public ThenIf_ then_() {
 		
-		parentStrBuilder.appendToBuffer("if("+stringBuilder_If.toString()+")");
+		parentStrBuilder.appendToBuffer(javaOprColor+"if"+resetColor+"("+stringBuilder_If.toString()+")");
 		stringBuilder_If=new StringBuilder(); 
 		
 		return new ThenIf_(this.parentStrBuilder,this);

@@ -1,7 +1,8 @@
 package util.funcPrintTree;
 
 public class ElseIf_ implements IStrBuilder {
-	
+	private String javaOprColor=RecursionPrintTree.javaOprColor;
+	private String resetColor=RecursionPrintTree.ANSI_RESET;
 	
 	private ThenIf_ parentStrBuilder;
 	private StrBuilder mainParentStrBuild;
@@ -20,15 +21,15 @@ public class ElseIf_ implements IStrBuilder {
 	
 	}
 	
-	public Exp<ElseIf_> exp(String resultVarName,int indx,Object resultVarValue) {
+	public Exp<ElseIf_> exp(String resultVarName,Object resultVarValue,String indxName,int indxVal) {
 		
-		Exp<ElseIf_> exp = new Exp<>(this,resultVarName,indx,resultVarValue);
+		Exp<ElseIf_> exp = new Exp<>(this,resultVarName,resultVarValue,indxName ,indxVal);
 		return exp;
 		
 	}
 	
 	public StrBuilder _if() {
-		mainParentStrBuild.appendToBuffer(" else {"+stringBuilder_Then+"}".toString());
+		mainParentStrBuild.appendToBuffer(javaOprColor + " else "+resetColor+"{"+stringBuilder_Then+"}".toString());
 		stringBuilder_Then=new StringBuilder(); 
 		return mainParentStrBuild;
 	}
