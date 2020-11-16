@@ -1,11 +1,10 @@
 package algorithmPractice.recursion;
 
-import util.Util;
-import util.funcPrintTree.ElseIf_;
-import util.funcPrintTree.IStrBuilder;
+
 import util.funcPrintTree.RecursionPrintTree;
-import util.funcPrintTree.StrBuilder;
-import util.funcPrintTree.ThenIf_;
+
+import static util.funcPrintTree.StrBuilder.*;
+
 
 public class TestRecursoinTreeVisualisation {
 	
@@ -13,7 +12,7 @@ public class TestRecursoinTreeVisualisation {
 	static int fnc(int n, int k, int level) {
 	    
 		RecursionPrintTree recursionPrintTree=new RecursionPrintTree(level);
-		recursionPrintTree.printHeaderCall( n , k);
+		recursionPrintTree.printHeaderCall(gVar("n", n)  , gVar("n", n));
 		
 		recursionPrintTree.printPreRecursion("Pree");
 		

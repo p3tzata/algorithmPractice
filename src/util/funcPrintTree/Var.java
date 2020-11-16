@@ -18,7 +18,7 @@ public class Var {
 	}
 	
 	public String varStr_(String varName,Object varValue,String indxName, int indxVal) {
-		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+"]"+resetColor +varValColor+":%s"+resetColor,varName,indxName, indxVal,varValue));
+		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,varName,indxName, indxVal,varValue));
 		
 	}
 	

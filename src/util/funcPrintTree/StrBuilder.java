@@ -77,6 +77,14 @@ public class StrBuilder implements IStrBuilder {
 		
 	}
 	
+	
+	
+	public static Variable gVar(String varName,Object varValue) {
+		
+		return new Variable(varName, varValue);
+	}
+	
+	
 	@Override
 	public String toString() {
 		return build();

@@ -13,7 +13,8 @@ import java.util.Map;
 public class RecursionPrintTree {
 	
 	  private static int multiple=3;
-	  private static String fncName="fnc";
+	  private static String fncName="function";
+	  private Var var;
 	  public static final String ANSI_RESET = "\u001B[0m";
 	  public static final String ANSI_MAGENTA = "\u001B[95m";
 	  public static final String ANSI_ITALIC = "\u001B[3m";
@@ -52,7 +53,8 @@ public class RecursionPrintTree {
 	  private int level;
 	  
 	  public static String varNameColor=ANSI_CYAN;
-	  public static String varValColor=ANSI_GRAY + ANSI_UNDERLINE + ANSI_ITALIC;
+	  //public static String varValColor=ANSI_GRAY + ANSI_UNDERLINE + ANSI_ITALIC;
+	  public static String varValColor=ANSI_GRAY + ANSI_ITALIC;
 	  public static String javaOprColor=ANSI_MAGENTA + ANSI_ITALIC;
 	  
 	  
@@ -62,6 +64,7 @@ public class RecursionPrintTree {
 		super();
 		this.level=level;
 		strBuilder=new StrBuilder();
+		var=new Var();
 		listOfBackgroundColor.add(ANSI_GREEN_BACKGROUND);
 		listOfBackgroundColor.add(ANSI_YELLOW_BACKGROUND);
 		listOfBackgroundColor.add(ANSI_GREEN_BACKGROUND);
@@ -97,17 +100,16 @@ public class RecursionPrintTree {
 	}
 
 
-
-
-	public void printHeaderCall(Object... obj) { 
+	public void printHeaderCall(Variable... variables) {
+		
 		StringBuilder str = new StringBuilder();
 		
-		for (int i = 0; i < obj.length; i++) {
-			Object object = obj[i];
-			if (i==obj.length-1) {
-			str.append(object);
+		for (int i = 0; i < variables.length; i++) {
+			Variable variable = variables[i];
+			if (i==variables.length-1) {
+			str.append(var.varStr_(variable.getVarName(), variable.getVarValue())   );
 			} else {
-				str.append(object);
+				str.append(var.varStr_(variable.getVarName(), variable.getVarValue()));
 				str.append(", ");
 			}
 			
@@ -115,13 +117,17 @@ public class RecursionPrintTree {
 			
 		}
 		
-	
-		
 		String string = str.toString();
 		//System.out.println("\u001B[30m" + "example" + "\u001B[0m");
-		System.out.println(String.format("%s" + getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ "%s(%s)", pad(getLevelMultiple(level)),fncName, string));
+		System.out.println(String.format("%s"+ getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ javaOprColor + "%s"+ANSI_RESET+"(%s)", pad(getLevelMultiple(level)),fncName, string));
 		
+	
 	}
+	
+	
+
+
+
 	
 	
 	
