@@ -48,9 +48,9 @@ public class TestRecursoinTreeVisualisation {
 	     );
 	    
 	     System.out.println(
-	    		 tree.strBuilder.if_().exp("test", num%2==1).C().var_("num", num).opr("%").const_(2).D().opr("==").const_(1).endExp()
-	    		 	.then_().exp("stock", 33,"i", 45).const_(45).endExp()
-	    		 	.else_().exp("wrongResult", num/2).var_("num", num).opr("/").const_(2).endExp()
+	    		 tree.strBuilder.if_().exp().var_("test", num%2==1).eq().C().var_("num", num).opr("%").const_(2).D().opr("==").const_(1).endExp()
+	    		 	.then_().exp().var_("stock", 33,"i", 45).eq().const_(45).endExp()
+	    		 	.else_().exp().var_("wrongResult", num/2).eq().var_("num", num).opr("/").const_(2).endExp()
 	    		 ._if().build()
 	     );
 	     
@@ -59,20 +59,20 @@ public class TestRecursoinTreeVisualisation {
 	     );
 	     
 	     System.out.println(
-	    		 tree.strBuilder.exp("foo", 20/2).var_("bar", 20).opr("/").const_(2).endExp()
+	    		 tree.strBuilder.exp().var_("foo", 20/2).eq().var_("bar", 20).opr("/").const_(2).endExp()
 	     );
 	     
 	     
 	     System.out.println(
-	    		 tree.strBuilder.exp("foo", 20/2).var_("bar", 20).opr("/").const_(2).andExp("arrVar", 100/2, "i",4).var_("num", 100).opr("/").const_(2).endExp()
+	    		 tree.strBuilder.exp().var_("foo", 20/2).eq().var_("bar", 20).opr("/").const_(2).and().var_("arrVar", 100/2, "i",4).eq().var_("num", 100).opr("/").const_(2).endExp()
 	     );
 	     
 	     System.out.println(
-	    		 tree.strBuilder.for_().exp("i", "").const_(0).andExp().var_("i", 0).opr("<").const_(10).andExp("i++", "").endExp()._for()
+	    		 tree.strBuilder.for_().exp().var_("i", "").eq().const_(0).and().var_("i", 0).opr("<").const_(10).and().var_("i++", "").endExp()._for()
 	     );
 	     
 	     System.out.println(
-	    		 tree.strBuilder.while_().exp("tst", 20<100).var_("num", 20).opr("<").const_(100).endExp()._while()
+	    		 tree.strBuilder.while_().exp().var_("tst", 20<100).eq().var_("num", 20).opr("<").const_(100).endExp()._while()
 	     );
 	    
 	}

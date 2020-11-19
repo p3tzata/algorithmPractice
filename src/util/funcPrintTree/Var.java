@@ -13,6 +13,12 @@ public class Var {
 	
 	public String varStr_(String varName,Object varValue) {
 		//return (String.format(varNameColor + "%s"+resetColor +"<%s>",varName, varValue));
+		return (String.format(this.varNameColor + "%s"+resetColor +varValColor +":%s"+resetColor,varName, varValue));
+		
+	}
+	
+	public String varStr_(String varName,Object varValue,String varNameColor) {
+		//return (String.format(varNameColor + "%s"+resetColor +"<%s>",varName, varValue));
 		return (String.format(varNameColor + "%s"+resetColor +varValColor +":%s"+resetColor,varName, varValue));
 		
 	}
@@ -21,6 +27,12 @@ public class Var {
 		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,varName,indxName, indxVal,varValue));
 		
 	}
+	
+	public String varStr_(String varName,Object varValue,String indxName, int indxVal,String varNameColor) {
+		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,varName,indxName, indxVal,varValue));
+		
+	}
+	
 	
 	
 }

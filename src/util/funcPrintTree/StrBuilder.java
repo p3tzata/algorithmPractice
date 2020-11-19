@@ -5,24 +5,23 @@ package util.funcPrintTree;
 public class StrBuilder implements IStrBuilder {
 	
 	private StringBuilder stringBuilder;
-	//private exp exp; 
+	private RecursionPrintTree recursionPrintTree;
+	
 	private Var var;
 	
-	public StrBuilder() {
-		stringBuilder=new StringBuilder();
-		var=new Var();	
+	public StrBuilder(RecursionPrintTree recursionPrintTree) {
+		this.stringBuilder=new StringBuilder();
+		this.recursionPrintTree=recursionPrintTree;
+		this.var=new Var();	
 	}
 	
-	public Exp<StrBuilder> exp(String resultVarName,Object resultVarValue) {
-		Exp<StrBuilder> exp = new Exp<>(this,resultVarName,resultVarValue);
+	public Exp<StrBuilder> exp() {
+		Exp<StrBuilder> exp = new Exp<>(this,recursionPrintTree);
 		return exp;
 	}
 	
-			
-	public Exp<StrBuilder> exp(String resultVarName,Object resultVarValue,String indxName,int indxVal) {
-		Exp<StrBuilder> exp = new Exp<>(this,resultVarName,resultVarValue,indxName ,indxVal);
-		return exp;
-	}
+	
+	
 	
 	public StrBuilder var_(String varName,Object varValue) {
 		String tmpString =var.varStr_(varName, varValue);
@@ -50,17 +49,17 @@ public class StrBuilder implements IStrBuilder {
 	
 	
 	public If_ if_() {
-		If_ if_ = new If_(this);
+		If_ if_ = new If_(this,recursionPrintTree);
 		return if_;
 	}
 	
 	public For_ for_() {
-		For_ for_=new For_(this);
+		For_ for_=new For_(this,recursionPrintTree);
 		return for_;
 	}
 	
 	public While_ while_() {
-		While_ while_=new While_(this);
+		While_ while_=new While_(this,recursionPrintTree);
 		return while_;
 	}
 	

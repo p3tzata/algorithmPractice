@@ -19,11 +19,15 @@ public class Combination {
 	static private void combination(int indx,int bound,int level) {
 		
 		RecursionPrintTree tree = new RecursionPrintTree(level);
+		tree.setIsEmptyLine(false);
 		//tree.printHeaderCall("indx:"+indx,"bound:"+ bound);
 		tree.printHeaderCall(gVar("indx",indx),gVar("bound", bound));
 		
 		if(indx>=vector.length) {
-			
+			tree.printPreRecursion(tree.strBuilder.
+					if_().exp().var_("tst", indx>=vector.length).eq().var_("indx", indx).opr(">=").var_("vector.length", vector.length).endExp()
+					.then_().exp().return_().endExp()._if()
+			);
 			
 			//Util.printArray(vector, ",");
 			String resultString=Util.printArrayAsString(vector, ",");
@@ -32,9 +36,17 @@ public class Combination {
 			return;
 		}
 		
-		tree.printPreRecursion(tree.strBuilder.for_().exp("i", bound).var_("bound", bound).andExp().var_("i", "").opr("<").var_("srcArray.lenght", srcArray.length).andExp().var_("i++", "").endExp()._for());
+		tree.printPreRecursion(tree.strBuilder.for_().exp().var_("i", bound).eq().var_("bound", bound).and().var_("i", "").opr("<").var_("srcArray.lenght", srcArray.length).and().var_("i++", "").endExp()._for());
 		for (int i=bound;i<srcArray.length;i++) {
-			tree.printPreRecursion(tree.strBuilder.exp("vector", srcArray[i], "indx",indx).var_("srcArray",srcArray[i] ,"i",i).andExp("bound", i+1).var_("i", i).opr("+").const_(1).endExp()  );
+			tree.printPreRecursion(tree.strBuilder.exp()
+					.Cc()
+						.var_("indx",indx+1).eq().var_("indx", indx).opr("+").const_(1).and().var_("bound", i+1).eq().var_("i", i).opr("+").const_(1)
+					.Dc().newLine()
+						.var_("vector", srcArray[i], "indx",indx).eq().var_("srcArray",srcArray[i] ,"i",i).and()
+					
+					.endExp()  
+					
+					);
 			
 			vector[indx]=srcArray[i];
 			combination(indx+1,i+1,level+1);

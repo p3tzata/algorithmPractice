@@ -29,7 +29,7 @@ public class RecursionPrintTree {
 	  public static final String ANSI_CYAN = "\u001B[36m";
 	  public static final String ANSI_GRAY = "\u001B[90m";
 	  public static final String ANSI_WHITE = "\u001B[37m";
-	
+	  private boolean isEmptyLine=false;
 	  
 	  //public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
 	  public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
@@ -52,9 +52,16 @@ public class RecursionPrintTree {
 	  private int curRotateFontColor;
 	  private int level;
 	  
-	  public static String varNameColor=ANSI_CYAN;
-	  //public static String varValColor=ANSI_GRAY + ANSI_UNDERLINE + ANSI_ITALIC;
+	  public static String varNameColor=ANSI_WHITE;
+	  //public static String varNameColor=ANSI_CYAN;
+	  
+	  public static String varNameColorFunc=ANSI_CYAN;
+	  
+	  
+	  
 	  public static String varValColor=ANSI_GRAY + ANSI_ITALIC;
+	  //public static String varValColor=ANSI_GRAY + ANSI_UNDERLINE + ANSI_ITALIC;
+	  
 	  public static String javaOprColor=ANSI_MAGENTA + ANSI_ITALIC;
 	  
 	  
@@ -63,7 +70,7 @@ public class RecursionPrintTree {
 	public RecursionPrintTree(int level) {
 		super();
 		this.level=level;
-		strBuilder=new StrBuilder();
+		strBuilder=new StrBuilder(this);
 		var=new Var();
 		listOfBackgroundColor.add(ANSI_GREEN_BACKGROUND);
 		listOfBackgroundColor.add(ANSI_YELLOW_BACKGROUND);
@@ -82,6 +89,16 @@ public class RecursionPrintTree {
 		curRotateFontColor=stateFontColorMap.get(level);
 		
 	}
+	
+	
+	
+
+	public int getLevel() {
+		return level;
+	}
+
+
+
 
 	public StrBuilder getStrBuilder() {
 		return strBuilder;
@@ -99,17 +116,25 @@ public class RecursionPrintTree {
 		RecursionPrintTree.fncName = fncName;
 	}
 
+	public void setIsEmptyLine(boolean set) {
+		this.isEmptyLine=set;
+	}
+	
+	
 
 	public void printHeaderCall(Variable... variables) {
+		if (isEmptyLine) {
+		System.out.println();
+		}
 		
 		StringBuilder str = new StringBuilder();
 		
 		for (int i = 0; i < variables.length; i++) {
 			Variable variable = variables[i];
 			if (i==variables.length-1) {
-			str.append(var.varStr_(variable.getVarName(), variable.getVarValue())   );
+			str.append(var.varStr_(variable.getVarName(), variable.getVarValue(),varNameColorFunc)   );
 			} else {
-				str.append(var.varStr_(variable.getVarName(), variable.getVarValue()));
+				str.append(var.varStr_(variable.getVarName(), variable.getVarValue(),varNameColorFunc));
 				str.append(", ");
 			}
 			
@@ -119,40 +144,37 @@ public class RecursionPrintTree {
 		
 		String string = str.toString();
 		//System.out.println("\u001B[30m" + "example" + "\u001B[0m");
-		System.out.println(String.format("%s"+ getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ javaOprColor + "%s"+ANSI_RESET+"(%s)", pad(getLevelMultiple(level)),fncName, string));
+		System.out.println(String.format("%s"+ getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ javaOprColor + "%s"+ANSI_RESET+"(%s)", getOffsetAsEmptyString(),fncName, string));
 		
 	
 	}
 	
 	
-
-
-
-	
-	
-	
-	
 	public  void printPostRecursion(Object... obj) {
 		
-		
+		if (isEmptyLine) {
+			System.out.println();
+			}
 		
 		if (obj.length>1) {
 			
 			
-			System.out.println(String.format("%s" + getBackgroundColor(level) + getFontColor()+ "{{"+ ANSI_RESET, pad(getLevelMultiple(level)+1)));
+			System.out.println(String.format("%s" + getBackgroundColor(level) + getFontColor()+ "{{"+ ANSI_RESET, getOffsetAsEmptyString(1)));
 			
 			for (int i = 0; i < obj.length; i++) {
 				System.out.print(String.format("%s%s " , pad(getLevelMultiple(level)+1), obj[i]));
 				
 				if(i!=obj.length-1) {
-					System.out.println();
+					if (isEmptyLine) {
+						System.out.println();
+					}
 				} 
 			}
 			System.out.println(String.format(getBackgroundColor(level) + getFontColor()+ "}}"  + ANSI_RESET + ANSI_RESET));
 			
 			} else {
 			
-			System.out.println(String.format("%s" + getBackgroundColor(level) + getFontColor()+ "{{"  + ANSI_RESET + " %s " + getBackgroundColor(level) + getFontColor()+ "}}"  + ANSI_RESET + ANSI_RESET, pad(getLevelMultiple(level)+1), obj[0]));
+			System.out.println(String.format("%s" + getBackgroundColor(level) + getFontColor()+ "{{"  + ANSI_RESET + " %s " + getBackgroundColor(level) + getFontColor()+ "}}"  + ANSI_RESET + ANSI_RESET, getOffsetAsEmptyString(1), obj[0]));
 			}
 		
 		
@@ -162,42 +184,61 @@ public class RecursionPrintTree {
 	
 	
 	public   void printPreRecursion(Object... obj) {
-		
+		if (isEmptyLine) {
+			System.out.println();
+		}
 		if (obj.length>1) {
 		
 		
-		System.out.println(String.format("%s" + getBackgroundColor(level) + getFontColor()+ "{"+ ANSI_RESET, pad(getLevelMultiple(level)+1)));
+		System.out.println(String.format("%s" + getBackgroundColor(level) + getFontColor()+ "{"+ ANSI_RESET, getOffsetAsEmptyString(1)));
 		
 		for (int i = 0; i < obj.length; i++) {
 			System.out.print(String.format("%s%s " , pad(getLevelMultiple(level)+1), obj[i]));
 			
 			if(i!=obj.length-1) {
-				System.out.println();
+				if (isEmptyLine) {
+					System.out.println();
+				}
 			} 
 		}
 		System.out.println(String.format(getBackgroundColor(level) + getFontColor()+ "}"  + ANSI_RESET + ANSI_RESET));
 		
 		} else {
 		
-		System.out.println(String.format("%s" + getBackgroundColor(level) + getFontColor()+ "{"  + ANSI_RESET + " %s " + getBackgroundColor(level) + getFontColor()+ "}"  + ANSI_RESET + ANSI_RESET, pad(getLevelMultiple(level)+1), obj[0]));
+		System.out.println(String.format("%s" + getBackgroundColor(level) + getFontColor()+ "{"  + ANSI_RESET + " %s " + getBackgroundColor(level) + getFontColor()+ "}"  + ANSI_RESET + ANSI_RESET, getOffsetAsEmptyString(1), obj[0]));
 		}
 	}
 
 	
-	
-	
-	
 	public   void printResult(Object result) {
-		
-		System.out.println(String.format( "%s" + getBackgroundColor(level) + getFontColor() + "<"  + ANSI_RESET +"==( %s )"+System.lineSeparator(), pad(getLevelMultiple(level)), result));
+		if (isEmptyLine) {
+			System.out.println();
+		}
+		System.out.println(String.format( "%s" + getBackgroundColor(level) + getFontColor() + "<"  + ANSI_RESET +"==( %s )", getOffsetAsEmptyString(), result));
 		
 	}
 	
 	public void printResultBase(Object result) {
-		
-		System.out.println(String.format( "%s" + getBackgroundColor(level) + getFontColor() + "<"  + ANSI_RESET +"===( %s )"+System.lineSeparator(), pad(getLevelMultiple(level)), result));
+		if (isEmptyLine) {
+			System.out.println();
+		}
+		System.out.println(String.format( "%s" + getBackgroundColor(level) + getFontColor() + "<"  + ANSI_RESET +"===( %s )", getOffsetAsEmptyString(), result));
 		
 	}
+	
+	
+	
+	public String getOffsetAsEmptyString(int additionSpace) {
+		return pad(getLevelMultiple(level) + additionSpace );
+	}
+	
+	public String getOffsetAsEmptyString() {
+		return getOffsetAsEmptyString(0);
+	}
+	
+	
+	
+	
 	
 	
 	
