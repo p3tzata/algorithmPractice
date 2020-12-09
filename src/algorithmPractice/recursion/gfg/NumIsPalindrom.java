@@ -7,7 +7,7 @@ import util.funcPrintTree.RecursionPrintTree;
 
 public class NumIsPalindrom {
 	
-	 static int IniNum=121;
+	 static int IniNum=1331;
 	
 	public static void main(String[] args) {
 	

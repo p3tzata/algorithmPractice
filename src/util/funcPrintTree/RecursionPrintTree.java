@@ -74,7 +74,6 @@ public class RecursionPrintTree {
 		var=new Var();
 		listOfBackgroundColor.add(ANSI_GREEN_BACKGROUND);
 		listOfBackgroundColor.add(ANSI_YELLOW_BACKGROUND);
-		listOfBackgroundColor.add(ANSI_GREEN_BACKGROUND);
 		listOfFontColor.add(ANSI_RED);
 		listOfFontColor.add(ANSI_BLUE);
 		
@@ -262,7 +261,7 @@ public class RecursionPrintTree {
 	
 	private static String getBackgroundColor(int level) {
 		
-		return listOfBackgroundColor.get(level%3);
+		return listOfBackgroundColor.get(level%2);
 		
 	}
 	
