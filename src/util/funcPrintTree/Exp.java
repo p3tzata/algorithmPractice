@@ -1,58 +1,138 @@
 package util.funcPrintTree;
 
-
+import static util.funcPrintTree.Var.*;
 
 
 public class Exp<T extends IStrBuilder> {
 	
-	private StringBuilder stringBuilder;
-	private T strBuilder;
+	private StringBuilder ownStringBuilder;
+	private T parentStrBuilder;
+	private String varNameColorFunc=RecursionPrintTree.varNameColorFunc;
+	private String varValColor=RecursionPrintTree.varValColor;
+	private String resetColor=RecursionPrintTree.ANSI_RESET;
+	private Var var;
+	private RecursionPrintTree recursionPrintTree;
 
-	public Exp(T strBuilder,String resultVarName,Object resultVarValue) {
-		this.stringBuilder=new StringBuilder();
-		this.strBuilder=strBuilder;
-		stringBuilder.append(String.format("%s<%s>=",resultVarName, resultVarValue));
+	public Exp(T parentStrBuilder,RecursionPrintTree recursionPrintTree) {
+		this.ownStringBuilder=new StringBuilder();
+		this.parentStrBuilder=parentStrBuilder;
+		this.recursionPrintTree=recursionPrintTree;
+		var=new Var();
+		
 	}
-	
-	public Exp(T strBuilder,String resultVarName,int indx, Object resultVarValue) {
-		this.stringBuilder=new StringBuilder();
-		this.strBuilder=strBuilder;
-		stringBuilder.append(String.format("%s[%d]<%s>=",resultVarName,indx, resultVarValue));
-	}
-
 	
 	
 	public Exp<T> var_(String varName,Object varValue) {
-		stringBuilder.append(String.format("%s<%s>",varName, varValue));
+		String tmpString =var.varStr_(varName, varValue);
+		ownStringBuilder.append(tmpString);
+		
+		return this;
+		
+		
+	}
+	
+	public Exp<T> var_(String resultVarName,Object resultVarValue,String indxName,int indxVal) {
+		String tmpString =var.varStr_(resultVarName,resultVarValue,indxName ,indxVal);
+		ownStringBuilder.append(tmpString);
 		return this;
 	}
 	
+	
+	
+	
+	
+	
 	public Exp<T> const_(Object constValue) {
-		stringBuilder.append(String.format("%s",constValue));
+		ownStringBuilder.append(String.format(varValColor+"%s"+resetColor,constValue));
 		return this;
 	}
 	
 	public Exp<T> opr(String operatorString) {
-		stringBuilder.append(String.format("%s",operatorString));
+		ownStringBuilder.append(String.format(" %s ",operatorString));
 		return this;
 	}
 	
 	public Exp<T> C () {
-		stringBuilder.append(String.format("%s","("));
+		ownStringBuilder.append(String.format("%s","("));
 		return this;
 	}
 	
 	public Exp<T> D () {
-		stringBuilder.append(String.format("%s",")"));
+		ownStringBuilder.append(String.format("%s",")"));
 		return this;
 	}
 	
+	public Exp<T> Cc () {
+		ownStringBuilder.append(String.format("%s%s%s",varNameColorFunc,"{",resetColor ));
+		return this;
+	}
+	
+	public Exp<T> Dc () {
+		ownStringBuilder.append(String.format("%s%s%s",varNameColorFunc,"} ",resetColor ));
+		return this;
+	}
+	
+	
+	public Exp<T> return_ () {
+		ownStringBuilder.append(String.format("%s","return;" ));
+		return this;
+	}
+	
+	public Exp<T> throwEx_ () {
+		ownStringBuilder.append(String.format("%s","throw Ex();" ));
+		return this;
+	}
+	
+	
 	public T endExp() {
-		strBuilder.appendToBuffer(stringBuilder.toString());
-		stringBuilder=new StringBuilder();
-		return strBuilder;
+		parentStrBuilder.appendToBuffer(ownStringBuilder.toString());
+		ownStringBuilder=new StringBuilder();
+		return parentStrBuilder;
 		
 	}
+	
+	public Exp<T> newLine() {
+		ownStringBuilder.append(System.lineSeparator());
+		ownStringBuilder.append(String.format("%s",recursionPrintTree.getOffsetAsEmptyString(2)));
+		return this;
+	}
+	
+	
+	
+	
+	/*
+	public Exp<T> expResult(String resultVarName,Object resultVarValue,String indxName,int indxVal) {
+		//ownStringBuilder.append("; ");
+		ownStringBuilder.append(String.format(var.varStr_(resultVarName,resultVarValue,indxName ,indxVal)+ " = "));
+		return this;
+		
+	}
+	
+	public Exp<T> expResult(String resultVarName,Object resultVarValue) {
+		//ownStringBuilder.append("; ");
+		//ownStringBuilder.append(String.format(varColor + "%s<"+resetColorString +"%s>=",resultVarName, resultVarValue));
+		ownStringBuilder.append(String.format(var.varStr_(resultVarName,resultVarValue)+" = "));
+		return this;
+		
+	}
+	*/
+	public Exp<T> eq() {
+		ownStringBuilder.append(" = ");
+		//ownStringBuilder.append(String.format(varColor + "%s<"+resetColorString +"%s>=",resultVarName, resultVarValue));
+		
+		return this;
+		
+	}
+	
+	
+	public Exp<T> and() {
+		ownStringBuilder.append("; ");
+		//ownStringBuilder.append(String.format(varColor + "%s<"+resetColorString +"%s>=",resultVarName, resultVarValue));
+		
+		return this;
+		
+	}
+	
 	
 	
 }

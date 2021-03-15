@@ -1,13 +1,13 @@
 package algorithmPractice.recursion.gfg;
 
-import static util.funcPrintTree.RecursionPrintTree.*;
+import static util.funcPrintTree.StrBuilder.*;
 
 import util.Util;
 import util.funcPrintTree.RecursionPrintTree;
 
 public class NumIsPalindrom {
 	
-	 static int IniNum=121;
+	 static int IniNum=1331;
 	
 	public static void main(String[] args) {
 	
@@ -28,7 +28,7 @@ public class NumIsPalindrom {
 	public static int isPalUtil (int num,int level) throws Exception { 
    
 		RecursionPrintTree tree = new RecursionPrintTree(level);
-		tree.printHeaderCall("num:"+num);
+		tree.printHeaderCall(gVar("num:",num));
         // base condition to return once we  
         // move past first digit 
 		int dupNum;
@@ -38,7 +38,7 @@ public class NumIsPalindrom {
         } else { 
         	int preOperationResult=num / 10;
         	//tree.printPreRecursion(frmStr_buildExp("num", preOperationResult, frmStr_var("num", num) + frmStr_operator("/") + frmStr_const(10)  ));
-        	tree.printPreRecursion(tree.strBuilder.exp("num", num/10).var_("num", num).opr("/").const_(10).endExp().build() );
+        	tree.printPreRecursion(tree.strBuilder.exp().Cc().var_("num", num/10).eq().var_("num", num).opr("/").const_(10).Dc().endExp().build() );
         	
             dupNum = isPalUtil(preOperationResult,level+1); 
         } 
@@ -48,13 +48,18 @@ public class NumIsPalindrom {
         
         tree.printPostRecursion(
         		
+        		/*
         		tree.strBuilder.if_().exp("tst", (num % 10 == dupNum % 10)).C().var_("num", num).opr("%").const_(10).D()
         																	.opr("==")
         																	.C().var_("dupNum", dupNum).opr("%").const_(10).D().endExp()
         						.then_().exp("dupNum", dupNum/10).var_("dupNum", dupNum).opr("/").const_(10).endExp()
         						.else_().exp("throw Exception", "").endExp()
         						._if()        						
-        		
+        		*/
+        		tree.strBuilder.if_().exp().var_("tst", (num % 10 == dupNum % 10)).eq().C().var_("num", num).opr("%").const_(10).D().opr("==")
+				.C().var_("dupNum", dupNum).opr("%").const_(10).D().endExp()
+				.then_().exp().var_("dupNum", dupNum/10).eq().var_("dupNum", dupNum).opr("/").const_(10).endExp()
+				.else_().exp().var_("throw Exception", "").eq().endExp()._if()
         		
         		
         );
