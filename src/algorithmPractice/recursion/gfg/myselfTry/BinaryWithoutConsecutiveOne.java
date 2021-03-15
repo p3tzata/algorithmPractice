@@ -32,6 +32,7 @@ public class BinaryWithoutConsecutiveOne {
 		
 		vector[indx]=1;
 		fun(indx+1,true);
+		
 		}
 		
 		
