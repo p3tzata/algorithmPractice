@@ -272,26 +272,7 @@ public class RecursionPrintTree {
 	}
 	
 	
-	
-	
-	
-/*
- * 	
-		frmStr_operatorIfElse(frmStr_buildExp("", (num % 10 == dupNum % 10) ,  frmStr_var("num", num) + frmStr_operator("%") + frmStr_const(10)  
-        																		 + frmStr_operator("==") 
-        																		 + frmStr_var("dupNum", dupNum) + frmStr_operator("%") + frmStr_const(10) )
-        						     ,frmStr_buildExp("dupNum", (dupNum / 10 ) ,  frmStr_var("dupNum", dupNum) + frmStr_operator("/") + frmStr_const(10))
-        						     ,"throw Exaption"
-        					 )
-        
-        
-        
-        
-*/
-	
-	
-	
-	
+
 	
 
 }

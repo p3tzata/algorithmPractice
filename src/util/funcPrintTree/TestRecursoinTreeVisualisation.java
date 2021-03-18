@@ -1,7 +1,5 @@
-package algorithmPractice.recursion;
+package util.funcPrintTree;
 
-
-import util.funcPrintTree.RecursionPrintTree;
 
 import static util.funcPrintTree.StrBuilder.*;
 
@@ -14,7 +12,7 @@ public class TestRecursoinTreeVisualisation {
 		RecursionPrintTree recursionPrintTree=new RecursionPrintTree(level);
 		recursionPrintTree.printHeaderCall(gVar("n", n)  , gVar("n", n));
 		
-		recursionPrintTree.printPreRecursion("Pree");
+		recursionPrintTree.printPreRecursion("Pre");
 		
 	    int result;
 	    	    
@@ -40,7 +38,7 @@ public class TestRecursoinTreeVisualisation {
 	public static void main(String[] args) {
 		int num=10;
 		RecursionPrintTree tree=new RecursionPrintTree(0);
-	    //fnc(3, 3, 0);
+	    fnc(3, 3, 0);
 	    	    
 	     
 	     System.out.println(
