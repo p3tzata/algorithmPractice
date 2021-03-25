@@ -2,13 +2,13 @@ package util.funcPrintTree;
 
 import util.Util;
 
-public class ArrayVariable<T> implements Variable{
+public class ArrayVariableImpl<T> implements Variable{
 	
 	private String varName;
 	private String varValue;
  
 	
-	public ArrayVariable(String varName, T[] arr,int fromIndx, int toIndx) {
+	public ArrayVariableImpl(String varName, T[] arr,int fromIndx, int toIndx) {
 		super();
 		this.varName = varName;
 		this.varValue = Util.printArraySliceAsString(arr, fromIndx, toIndx, ", ");

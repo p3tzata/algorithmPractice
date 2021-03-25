@@ -85,7 +85,7 @@ public class StrBuilder implements IStrBuilder {
 	
 	public static <T> Variable gArrayVar(String varName,T[] arr,int fromIndx, int toIndx) {
 		
-		return new ArrayVariable<T>(varName,arr, fromIndx, toIndx);
+		return new ArrayVariableImpl<T>(varName,arr, fromIndx, toIndx);
 		
 	
 		
