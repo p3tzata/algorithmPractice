@@ -10,7 +10,9 @@ public class TestRecursoinTreeVisualisation {
 	static int fnc(int n, int k, int level) {
 	    
 		RecursionPrintTree recursionPrintTree=new RecursionPrintTree(level);
-		recursionPrintTree.printHeaderCall(gVar("n", n)  , gVar("n", n));
+		Integer[] intArray = new Integer[] {0,1,2,3,4,5,6,7};
+		
+		recursionPrintTree.printHeaderCall(gVar("n", n)  , gVar("n", n), gArrayVar("intArray", intArray, 2, 4));
 		
 		recursionPrintTree.printPreRecursion("Pre");
 		
@@ -72,7 +74,7 @@ public class TestRecursoinTreeVisualisation {
 	     System.out.println(
 	    		 tree.strBuilder.while_().exp().var_("tst", 20<100).eq().var_("num", 20).opr("<").const_(100).endExp()._while()
 	     );
-	    
+	     
 	}
 	
 
