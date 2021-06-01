@@ -271,10 +271,16 @@ public class RecursionPrintTree {
 		
 	}
 	
+<<<<<<< HEAD
 	public static Variable gVar(String varName,Object varValue) {
 		
 		return new Variable(varName, varValue);
 	}
+=======
+	
+
+	
+>>>>>>> 46f73fc614270b6c6ff699612af649d3995ce79b
 
 }
 
