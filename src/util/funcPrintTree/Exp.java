@@ -30,15 +30,20 @@ public class Exp<T extends IStrBuilder> {
 		
 		
 	}
-	
+	/*
 	public Exp<T> var_(String resultVarName,Object resultVarValue,String indxName,int indxVal) {
 		String tmpString =var.varStr_(resultVarName,resultVarValue,indxName ,indxVal);
 		ownStringBuilder.append(tmpString);
 		return this;
 	}
+	*/
 	
-	
-	
+	public Exp<T> var_(Variable var,Variable indx) {
+		String tmpString =this.var.varStr_(var,indx);
+		
+		ownStringBuilder.append(tmpString);
+		return this;
+	}
 	
 	
 	
@@ -48,7 +53,7 @@ public class Exp<T extends IStrBuilder> {
 	}
 	
 	public Exp<T> opr(String operatorString) {
-		ownStringBuilder.append(String.format(" %s ",operatorString));
+		ownStringBuilder.append(String.format("%s",operatorString));
 		return this;
 	}
 	

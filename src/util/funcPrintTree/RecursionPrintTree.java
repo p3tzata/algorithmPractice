@@ -13,7 +13,7 @@ import java.util.Map;
 public class RecursionPrintTree {
 	
 	  private static int multiple=3;
-	  private static String fncName="function";
+	  private static String fncName="FUNCTION";
 	  private Var var;
 	  public static final String ANSI_RESET = "\u001B[0m";
 	  public static final String ANSI_MAGENTA = "\u001B[95m";
@@ -63,7 +63,7 @@ public class RecursionPrintTree {
 	  //public static String varValColor=ANSI_GRAY + ANSI_UNDERLINE + ANSI_ITALIC;
 	  
 	  public static String javaOprColor=ANSI_MAGENTA + ANSI_ITALIC;
-	  
+	  public static String functionNameColor=ANSI_MAGENTA;
 	  
 	  public StrBuilder strBuilder;
 	
@@ -121,7 +121,7 @@ public class RecursionPrintTree {
 	
 	
 
-	public void printHeaderCall(Variable... variables) {
+	public void printFuncCall(Variable... variables) {
 		if (isEmptyLine) {
 		System.out.println();
 		}
@@ -143,7 +143,7 @@ public class RecursionPrintTree {
 		
 		String string = str.toString();
 		//System.out.println("\u001B[30m" + "example" + "\u001B[0m");
-		System.out.println(String.format("%s"+ getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ javaOprColor + "%s"+ANSI_RESET+"(%s)", getOffsetAsEmptyString(),fncName, string));
+		System.out.println(String.format("%s"+ getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ functionNameColor + "%s"+ANSI_RESET+"(%s)", getOffsetAsEmptyString(),fncName, string));
 		
 	
 	}
@@ -271,28 +271,10 @@ public class RecursionPrintTree {
 		
 	}
 	
-	
-	
-	
-	
-/*
- * 	
-		frmStr_operatorIfElse(frmStr_buildExp("", (num % 10 == dupNum % 10) ,  frmStr_var("num", num) + frmStr_operator("%") + frmStr_const(10)  
-        																		 + frmStr_operator("==") 
-        																		 + frmStr_var("dupNum", dupNum) + frmStr_operator("%") + frmStr_const(10) )
-        						     ,frmStr_buildExp("dupNum", (dupNum / 10 ) ,  frmStr_var("dupNum", dupNum) + frmStr_operator("/") + frmStr_const(10))
-        						     ,"throw Exaption"
-        					 )
-        
-        
-        
-        
-*/
-	
-	
-	
-	
-	
+	public static Variable gVar(String varName,Object varValue) {
+		
+		return new Variable(varName, varValue);
+	}
 
 }
 
