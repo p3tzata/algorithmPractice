@@ -31,13 +31,13 @@ public class StrBuilder implements IStrBuilder {
 		return this;
 	}
 	
-	public StrBuilder var_(String resultVarName,Object resultVarValue,String indxName,int indxVal) {
-		String tmpString =var.varStr_(resultVarName,resultVarValue,indxName ,indxVal);
-		stringBuilder.append(tmpString);
-		
-	
-		return this;
-	}
+//	public StrBuilder var_(String resultVarName,Object resultVarValue,String indxName,int indxVal) {
+//		String tmpString =var.varStr_(resultVarName,resultVarValue,indxName ,indxVal);
+//		stringBuilder.append(tmpString);
+//		
+//	
+//		return this;
+//	}
 	
 	
 	
@@ -78,6 +78,9 @@ public class StrBuilder implements IStrBuilder {
 	
 	
 	
+<<<<<<< HEAD
+	
+=======
 	public static Variable gVar(String varName,Object varValue) {
 		
 		return new VariableImpl(varName, varValue);
@@ -90,6 +93,7 @@ public class StrBuilder implements IStrBuilder {
 	
 		
 	}
+>>>>>>> 46f73fc614270b6c6ff699612af649d3995ce79b
 	
 	
 	@Override

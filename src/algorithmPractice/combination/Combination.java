@@ -2,11 +2,12 @@ package algorithmPractice.combination;
 
 import util.Util;
 import util.funcPrintTree.RecursionPrintTree;
-import static util.funcPrintTree.StrBuilder.*;
+import static util.funcPrintTree.RecursionPrintTree.*;
+
 
 public class Combination {
 
-	static String[] srcArray = new String[] {"A","B","C","D"};
+	static String[] srcArray = new String[] {"A","B","C"};
 	static String[] vector = new String[2];
 	
 	public static void main(String[] args) {
@@ -21,7 +22,7 @@ public class Combination {
 		RecursionPrintTree tree = new RecursionPrintTree(level);
 		tree.setIsEmptyLine(false);
 		//tree.printHeaderCall("indx:"+indx,"bound:"+ bound);
-		tree.printHeaderCall(gVar("indx",indx),gVar("bound", bound));
+		tree.printFuncCall(gVar("indx",indx),gVar("bound", bound));
 		
 		if(indx>=vector.length) {
 			tree.printPreRecursion(tree.strBuilder.
@@ -42,7 +43,7 @@ public class Combination {
 					.Cc()
 						.var_("indx",indx+1).eq().var_("indx", indx).opr("+").const_(1).and().var_("bound", i+1).eq().var_("i", i).opr("+").const_(1)
 					.Dc().newLine()
-						.var_("vector", srcArray[i], "indx",indx).eq().var_("srcArray",srcArray[i] ,"i",i).and()
+						.var_(gVar("vector", srcArray[i]), gVar("indx",indx)).eq().var_(gVar("srcArray",srcArray[i]) ,gVar("i",i)).and()
 					
 					.endExp()  
 					

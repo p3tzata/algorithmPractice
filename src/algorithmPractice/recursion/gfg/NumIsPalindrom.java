@@ -1,6 +1,6 @@
 package algorithmPractice.recursion.gfg;
 
-import static util.funcPrintTree.StrBuilder.*;
+import static util.funcPrintTree.RecursionPrintTree.*;
 
 import util.Util;
 import util.funcPrintTree.RecursionPrintTree;
@@ -28,7 +28,7 @@ public class NumIsPalindrom {
 	public static int isPalUtil (int num,int level) throws Exception { 
    
 		RecursionPrintTree tree = new RecursionPrintTree(level);
-		tree.printHeaderCall(gVar("num:",num));
+		tree.printFuncCall(gVar("num:",num));
         // base condition to return once we  
         // move past first digit 
 		int dupNum;

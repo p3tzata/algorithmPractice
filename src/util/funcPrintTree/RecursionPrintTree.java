@@ -13,7 +13,7 @@ import java.util.Map;
 public class RecursionPrintTree {
 	
 	  private static int multiple=3;
-	  private static String fncName="function";
+	  private static String fncName="FUNCTION";
 	  private Var var;
 	  public static final String ANSI_RESET = "\u001B[0m";
 	  public static final String ANSI_MAGENTA = "\u001B[95m";
@@ -63,7 +63,7 @@ public class RecursionPrintTree {
 	  //public static String varValColor=ANSI_GRAY + ANSI_UNDERLINE + ANSI_ITALIC;
 	  
 	  public static String javaOprColor=ANSI_MAGENTA + ANSI_ITALIC;
-	  
+	  public static String functionNameColor=ANSI_MAGENTA;
 	  
 	  public StrBuilder strBuilder;
 	
@@ -121,7 +121,7 @@ public class RecursionPrintTree {
 	
 	
 
-	public void printHeaderCall(Variable... variables) {
+	public void printFuncCall(Variable... variables) {
 		if (isEmptyLine) {
 		System.out.println();
 		}
@@ -143,7 +143,7 @@ public class RecursionPrintTree {
 		
 		String string = str.toString();
 		//System.out.println("\u001B[30m" + "example" + "\u001B[0m");
-		System.out.println(String.format("%s"+ getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ javaOprColor + "%s"+ANSI_RESET+"(%s)", getOffsetAsEmptyString(),fncName, string));
+		System.out.println(String.format("%s"+ getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ functionNameColor + "%s"+ANSI_RESET+"(%s)", getOffsetAsEmptyString(),fncName, string));
 		
 	
 	}
@@ -271,9 +271,16 @@ public class RecursionPrintTree {
 		
 	}
 	
+<<<<<<< HEAD
+	public static Variable gVar(String varName,Object varValue) {
+		
+		return new Variable(varName, varValue);
+	}
+=======
 	
 
 	
+>>>>>>> 46f73fc614270b6c6ff699612af649d3995ce79b
 
 }
 

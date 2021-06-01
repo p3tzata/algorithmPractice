@@ -23,13 +23,24 @@ public class Var {
 		
 	}
 	
-	public String varStr_(String varName,Object varValue,String indxName, int indxVal) {
-		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,varName,indxName, indxVal,varValue));
+//	public String varStr_(String varName,Object varValue,String indxName, int indxVal) {
+//		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,varName,indxName, indxVal,varValue));
+//		
+//	}
+//	
+//	public String varStr_(String varName,Object varValue,String indxName, int indxVal,String varNameColor) {
+//		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,varName,indxName, indxVal,varValue));
+//		
+//	}
+	
+	public String varStr_(Variable var,Variable indx) {
+		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,var.getVarName(),indx.getVarName(), indx.getVarValue(),var.getVarValue()));
 		
 	}
 	
-	public String varStr_(String varName,Object varValue,String indxName, int indxVal,String varNameColor) {
-		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,varName,indxName, indxVal,varValue));
+	
+	public String varStr_(Variable var,Variable indx,String varNameColor) {
+		return (String.format(varNameColor + "%s[%s"+varValColor +":%d"+resetColor+varNameColor+"]"+resetColor +varValColor+":%s"+resetColor,var.getVarName(),indx.getVarName(), indx.getVarValue(),var.getVarValue()));
 		
 	}
 	
