@@ -1,11 +1,8 @@
 package util.funcPrintTree;
 
 
-<<<<<<< HEAD:src/util/funcPrintTree/TestRecursoinTreeVisualisation.java
-import static util.funcPrintTree.RecursionPrintTree.*;
-=======
+
 import static util.funcPrintTree.StrBuilder.*;
->>>>>>> 46f73fc614270b6c6ff699612af649d3995ce79b:src/algorithmPractice/recursion/TestRecursoinTreeVisualisation.java
 
 
 public class TestRecursoinTreeVisualisation {
@@ -14,13 +11,12 @@ public class TestRecursoinTreeVisualisation {
 	static int fnc(int n, int k, int level) {
 	    
 		RecursionPrintTree recursionPrintTree=new RecursionPrintTree(level);
-<<<<<<< HEAD:src/util/funcPrintTree/TestRecursoinTreeVisualisation.java
-		recursionPrintTree.printFuncCall(gVar("n", n)  , gVar("n", n));
-=======
+
+
 		Integer[] intArray = new Integer[] {0,1,2,3,4,5,6,7};
 		
 		recursionPrintTree.printHeaderCall(gVar("n", n)  , gVar("n", n), gArrayVar("intArray", intArray, 2, 4));
->>>>>>> 46f73fc614270b6c6ff699612af649d3995ce79b:src/algorithmPractice/recursion/TestRecursoinTreeVisualisation.java
+
 		
 		recursionPrintTree.printPreRecursion("Pre");
 		
@@ -48,14 +44,9 @@ public class TestRecursoinTreeVisualisation {
 	public static void main(String[] args) {
 		int num=10;
 		RecursionPrintTree tree=new RecursionPrintTree(0);
-<<<<<<< HEAD:src/util/funcPrintTree/TestRecursoinTreeVisualisation.java
-	    fnc(2, 2, 0);
-	    System.out.println(System.lineSeparator()+ 	"==========" +System.lineSeparator()  );	    
-=======
+
 	    fnc(3, 3, 0);
-	    	    
->>>>>>> 46f73fc614270b6c6ff699612af649d3995ce79b:src/algorithmPractice/recursion/TestRecursoinTreeVisualisation.java
-	     
+	    	         
 	     System.out.println(
 	    		 tree.strBuilder.var_("num", num).build()
 	     );

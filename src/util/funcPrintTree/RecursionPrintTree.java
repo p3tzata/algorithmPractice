@@ -148,6 +148,33 @@ public class RecursionPrintTree {
 	
 	}
 	
+	public void printHeaderCall(Variable... variables) {
+		if (isEmptyLine) {
+		System.out.println();
+		}
+		
+		StringBuilder str = new StringBuilder();
+		
+		for (int i = 0; i < variables.length; i++) {
+			Variable variable = variables[i];
+			if (i==variables.length-1) {
+			str.append(var.varStr_(variable.getVarName(), variable.getVarValue(),varNameColorFunc)   );
+			} else {
+				str.append(var.varStr_(variable.getVarName(), variable.getVarValue(),varNameColorFunc));
+				str.append(", ");
+			}
+			
+			
+			
+		}
+		
+		String string = str.toString();
+		//System.out.println("\u001B[30m" + "example" + "\u001B[0m");
+		System.out.println(String.format("%s"+ getBackgroundColor(level) +  getFontColor() +">"  + ANSI_RESET+ javaOprColor + "%s"+ANSI_RESET+"(%s)", getOffsetAsEmptyString(),fncName, string));
+		
+	
+	}
+	
 	
 	public  void printPostRecursion(Object... obj) {
 		
@@ -271,16 +298,7 @@ public class RecursionPrintTree {
 		
 	}
 	
-<<<<<<< HEAD
-	public static Variable gVar(String varName,Object varValue) {
-		
-		return new Variable(varName, varValue);
-	}
-=======
-	
 
-	
->>>>>>> 46f73fc614270b6c6ff699612af649d3995ce79b
 
 }
 

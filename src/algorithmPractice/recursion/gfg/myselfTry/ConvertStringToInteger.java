@@ -3,7 +3,9 @@ package algorithmPractice.recursion.gfg.myselfTry;
 
 import util.Util;
 import util.funcPrintTree.RecursionPrintTree;
-import static util.funcPrintTree.RecursionPrintTree.*;
+
+
+import static util.funcPrintTree.StrBuilder.*;
 
 public class ConvertStringToInteger {
 

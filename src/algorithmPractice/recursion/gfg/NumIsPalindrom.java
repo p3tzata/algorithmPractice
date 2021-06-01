@@ -1,7 +1,7 @@
 package algorithmPractice.recursion.gfg;
 
-import static util.funcPrintTree.RecursionPrintTree.*;
 
+import static util.funcPrintTree.StrBuilder.*;
 import util.Util;
 import util.funcPrintTree.RecursionPrintTree;
 

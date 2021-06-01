@@ -2,8 +2,8 @@ package algorithmPractice.combination;
 
 import util.Util;
 import util.funcPrintTree.RecursionPrintTree;
-import static util.funcPrintTree.RecursionPrintTree.*;
 
+import static util.funcPrintTree.StrBuilder.*;
 
 public class Combination {
 

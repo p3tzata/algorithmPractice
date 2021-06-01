@@ -38,12 +38,6 @@ public static <T> void printMatrix(T[][] arr, int cellLength){
 		
 	}
 	
-public static <T> void printArray(T[] arr){
-		
-		printArraySlice(arr, 0, arr.length-1, ", ");
-		
-	}
-	
 	public static <T> String printArrayAsString(T[] arr,String delimeter){
 		
 		return printArraySliceAsString(arr, 0, arr.length-1, delimeter);
