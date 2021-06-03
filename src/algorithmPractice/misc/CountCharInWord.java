@@ -7,16 +7,34 @@ import java.nio.ReadOnlyBufferException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 import algorithmPractice.combination.exam.Words;
 
 
-public class MusalaSoft {
+public class CountCharInWord {
 
 	public static void main(String[] args) {
-		//System.out.println((1+3)/2);
 		
+		
+		
+		String word="aaaabbbczzzz";
+		AtomicInteger resultVar= new AtomicInteger(0);
+		
+		
+		int curResutl=0;
+		int numOper=0;
+		for(int i=0;i<word.length();i=i+curResutl) {
+			curResutl=0;
+			curResutl=funRec(i,i+1,word);
+			numOper=numOper + (curResutl/2);
+			System.out.println(curResutl);
+		}
+		 
 	
+		System.out.println(numOper + "*********");
 		
 		
 		
@@ -32,10 +50,10 @@ public class MusalaSoft {
 		
 	
 		for(int i=0;i<wordList.size();i++) {
-			String word = wordList.get(i);
+			String word1 = wordList.get(i);
 			
 			
-			int procced_word = procced_word(word);
+			int procced_word = procced_word(word1);
 			result.add(procced_word);
 			
 			
@@ -47,7 +65,23 @@ public class MusalaSoft {
 	   }
 
 
-
+	private static  int funRec (int curIndx, int nextIndx,String word) {
+		
+		if(nextIndx==word.length()|| nextIndx==word.length()) {
+			return 1;
+		}
+		
+		
+		if(word.charAt(curIndx)==word.charAt(nextIndx)) {
+			
+			return 1 + funRec(curIndx, nextIndx+1, word);
+			
+		}
+		
+	    return 1;
+		
+		
+	}
 
 
 
