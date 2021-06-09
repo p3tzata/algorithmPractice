@@ -1,5 +1,6 @@
 package algorithmPractice.recursion.gfg.myselfTry;
 
+
 import util.Util;
 
 public class RecursionLinkedNode {
@@ -8,34 +9,53 @@ public class RecursionLinkedNode {
 	public static void main(String[] args) {
 		//LinkedNode aNode = null,bNode=null;
 		
-		LinkedNode linkedNode = new LinkedNode(10, null);
+		LinkedNode linkedNode = new LinkedNode(100, null);
 		
-		LinkedNode linkedNode2 = new LinkedNode(9, linkedNode);
+		LinkedNode linkedNode2 = new LinkedNode(90, linkedNode);
 		
-		LinkedNode linkedNode3 = new LinkedNode(8, linkedNode2);
-		LinkedNode linkedNode4 = new LinkedNode(7, linkedNode3);
-		LinkedNode linkedNode5 = new LinkedNode(6, linkedNode4);
-		LinkedNode linkedNode6 = new LinkedNode(5, linkedNode5);
-		LinkedNode linkedNode7 = new LinkedNode(4, linkedNode6);
-		LinkedNode linkedNode8 = new LinkedNode(3, linkedNode7);
-		LinkedNode linkedNode9 = new LinkedNode(2, linkedNode8);
-		LinkedNode linkedNode10 = new LinkedNode(1, linkedNode9);
+		LinkedNode linkedNode3 = new LinkedNode(80, linkedNode2);
+		LinkedNode  linkedNode4 = new LinkedNode(70, linkedNode3);
+		LinkedNode linkedNode5 = new LinkedNode(60, linkedNode4);
+		LinkedNode linkedNode6 = new LinkedNode(50, linkedNode5);
+		LinkedNode linkedNode7 = new LinkedNode(40, linkedNode6);
+		LinkedNode linkedNode8 = new LinkedNode(30, linkedNode7);
+		LinkedNode linkedNode9 = new LinkedNode(20, linkedNode8);
+		LinkedNode linkedNode10 = new LinkedNode(10, linkedNode9);
 		
 		
 		//linkedNode10.printLinkedNode();
+		//fun_findMiddle(linkedNode10,0);
 		
 		
-		
-		funUtil(linkedNode10);
-		aNode.printLinkedNode();
-		bNode.printLinkedNode();
+		//funUtil_split(linkedNode10);
+		//aNode.printLinkedNode();
+		//bNode.printLinkedNode();
 		//fun_printAlternate(linkedNode10,true);
 
 	}
 	
 	
 
-	private static void funUtil(LinkedNode node) {
+	private static int fun_findMiddle(LinkedNode node, int i) {
+		
+		if(node.getNextNode()==null) {
+			return i;
+		}
+		
+		
+		int total = fun_findMiddle(node.getNextNode(),i+1);
+		
+		if(total/2==i) {
+			Util.printlnLine(node.getData());
+		}
+		
+		return total;
+		
+	}
+
+
+
+	private static void funUtil_split(LinkedNode node) {
 		aNode=node;
 		
 		
@@ -45,7 +65,7 @@ public class RecursionLinkedNode {
 		bNode.setNextNode(null);
 		aNode.setNextNode(null);
 		
-		fun(aNode,bNode,true,findNextNode);
+		fun_split(aNode,bNode,true,findNextNode);
 		
 		
 	}
@@ -55,7 +75,7 @@ public class RecursionLinkedNode {
 	
 
 
-	private static void fun(LinkedNode aNode,LinkedNode bNode,Boolean isSetToaNode, LinkedNode nextNode) {
+	private static void fun_split(LinkedNode aNode,LinkedNode bNode,Boolean isSetToaNode, LinkedNode nextNode) {
 		
 		if (nextNode==null) {
 			return;
@@ -66,7 +86,7 @@ public class RecursionLinkedNode {
 			aNode.setNextNode(nextNode);
 			LinkedNode findNextNode=nextNode.getNextNode();
 			nextNode.setNextNode(null);
-			fun(nextNode, bNode, !isSetToaNode, findNextNode);
+			fun_split(nextNode, bNode, !isSetToaNode, findNextNode);
 			
 			
 		} else {
@@ -74,7 +94,7 @@ public class RecursionLinkedNode {
 			bNode.setNextNode(nextNode);
 			LinkedNode findNextNode=nextNode.getNextNode();
 			nextNode.setNextNode(null);
-			fun(aNode, nextNode, !isSetToaNode, findNextNode);
+			fun_split(aNode, nextNode, !isSetToaNode, findNextNode);
 			
 		}
 		
